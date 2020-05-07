@@ -1,4 +1,5 @@
 # Arion
+## 0.1.2
 Arion is a CRM built on Django.
 
 
@@ -11,6 +12,5 @@ Arion is a CRM built on Django.
 - Expenses
 
 #### Next version
-##### 0.1.0
-- Contacts
-- Partners
+##### 0.2.0
+- Products
