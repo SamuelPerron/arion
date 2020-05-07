@@ -1,7 +1,11 @@
 from django.contrib import admin
-from .models import Product, Category
+from .models import Product, Category, Package
 from tabbed_admin import TabbedModelAdmin
 
+
+class PackageInline(admin.StackedInline):
+    model = Package
+    extra = 0
 
 class ProductAdmin(TabbedModelAdmin):
     list_display = ('internal_reference', 'name',)
@@ -20,6 +24,7 @@ class ProductAdmin(TabbedModelAdmin):
         (None, {
             'fields': (
                 ('price', 'cost'),
+                'minimum_sale_qty'
             ),
         }),
     )
@@ -29,6 +34,7 @@ class ProductAdmin(TabbedModelAdmin):
                 ('weight', 'volume'),
             ),
         }),
+        PackageInline,
     )
     tabs = [
         ('General informations', tab_informations),
