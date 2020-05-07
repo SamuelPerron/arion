@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Partner, Contact
+from tabbed_admin import TabbedModelAdmin
 
 contact_fieldsets = (
     (None, {
@@ -20,17 +21,26 @@ class ContactInline(admin.StackedInline):
     extra = 0
     fieldsets = contact_fieldsets
 
-class PartnerAdmin(admin.ModelAdmin):
+class PartnerAdmin(TabbedModelAdmin):
     list_display = ('internal_code', 'name',)
-    inlines = (ContactInline,)
-    fieldsets = (
+    tab_informations = (
         (None, {
-            'fields': ('logo', 'name', ('internal_code', 'company_number'), 'website', 'hq_address'),
+            'fields': ('logo', 'name', ('internal_code', 'company_number'), 'website', 'address'),
         }),
+    )
+    tab_contacts = (
+        ContactInline,
+    )
+    tab_internal_notes = (
         (None, {
             'fields': ('internal_notes',)
         }),
     )
+    tabs = [
+        ('Informations', tab_informations),
+        ('Contacts', tab_contacts),
+        ('Internal Notes', tab_internal_notes),
+    ]
 
 
 admin.site.register(Partner, PartnerAdmin)

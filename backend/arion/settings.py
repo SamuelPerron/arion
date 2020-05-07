@@ -4,6 +4,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'q$%ii(h!#r(biyzi+)ae)%*fy6hy4u23-6(@l&f%m15h4a09-t'
 DEBUG = True
 ALLOWED_HOSTS = []
+TABBED_ADMIN_USE_JQUERY_UI = True
 
 
 
@@ -16,9 +17,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
+    'tabbed_admin',
 
     'arion.common',
     'arion.partners',
+    'arion.products',
 ]
 
 MIDDLEWARE = [

@@ -9,7 +9,7 @@ class Partner(models.Model):
     company_number = models.CharField(max_length=8, blank=True)
     website = models.CharField(max_length=255, blank=True)
     internal_notes = models.TextField(blank=True)
-    hq_address = models.ForeignKey(Address, on_delete=models.CASCADE, verbose_name='HQ address', blank=True, null=True)
+    address = models.ForeignKey(Address, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):
         if self.internal_code:
